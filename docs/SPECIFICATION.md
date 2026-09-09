@@ -151,6 +151,18 @@ Fornecer um serviço (API) que recebe um texto ou arquivo, e retorna:
 
 ## 8. Decomposição em Componentes (Unidades Testáveis)
 
+```
+┌─────────────┐    ┌──────────────┐    ┌────────────────┐    ┌─────────────┐
+│   Detector   │ →  │  Validator   │ →  │  Classifier     │ →  │  Redactor    │
+│ (regex/regras)   │ (checksum CPF/  │ (níveis de       │  (mask/redact/  │
+│              │    │  CNPJ)       │    │  sensibilidade) │    │  hash)       │
+└─────────────┘    └──────────────┘    └────────────────┘    └─────────────┘
+                                                                      ↓
+                                                              ┌──────────────┐
+                                                              │ Audit Logger  │
+                                                              └──────────────┘
+```
+
 - **Detector**: encontra candidatos a entidades via padrões (regex) por tipo.
 - **Validator**: aplica regras matemáticas (RN01, RN02) para confirmar ou descartar candidatos.
 - **Classifier**: atribui nível de sensibilidade (RN03) e resolve sobreposições (RN04).
@@ -184,3 +196,4 @@ Cada componente deve ser uma unidade isolada (módulo/classe/função pura sempr
 | 2026-09-08 | Nome do sistema definido como **Data Guardian** | Decisão da equipe sobre naming do produto | Equipe |
 | 2026-09-09 | Stack definida: backend Python/FastAPI, frontend React+TS+Vite+Tailwind, infra Docker (ver ADR-0002) | Viabilizar implementação e demonstração visual do fluxo de scan | Marcos |
 '@
+
