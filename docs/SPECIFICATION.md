@@ -1,3 +1,4 @@
+Set-Content -Path docs\SPECIFICATION.md -Encoding UTF8 -Value @'
 # Especificação Técnica — Data Guardian
 ## Motor de Detecção, Classificação e Mascaramento de Dados Pessoais (LGPD Compliance Engine)
 
@@ -193,4 +194,6 @@ Cada componente deve ser uma unidade isolada (módulo/classe/função pura sempr
 |------|-----------|--------|-------------|
 | — | Versão inicial (v1.0) publicada | Baseline para início do desenvolvimento | — |
 | 2026-09-08 | Nome do sistema definido como **Data Guardian** | Decisão da equipe sobre naming do produto | Equipe |
+| 2026-09-09 | Stack definida: backend Python/FastAPI, frontend React+TS+Vite+Tailwind, infra Docker (ver ADR-0002) | Viabilizar implementação e demonstração visual do fluxo de scan | Marcos |
+'@
 

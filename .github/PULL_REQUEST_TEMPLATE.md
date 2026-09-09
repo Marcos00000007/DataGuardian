@@ -1,3 +1,13 @@
+Set-Content -Path .github\PULL_REQUEST_TEMPLATE.md -Encoding UTF8 -Value @'
+## Descrição
+
+<!-- O que este PR faz? Qual problema resolve? -->
+
+## Issue relacionada
+
+Closes #
+
+## Checklist
 ## 📋 Descrição
 
 <!-- O que este PR faz? Qual problema resolve? -->
@@ -14,6 +24,10 @@ Closes #
 - [ ] A documentação (README/ADRs) foi atualizada, se necessário
 - [ ] Foi revisado por pelo menos um outro membro da equipe
 
+## Como testar
+
+<!-- Comandos ou passos para o revisor validar localmente -->
+'@
 ## 🧪 Como testar
 
 <!-- Comandos ou passos para o revisor validar localmente -->
