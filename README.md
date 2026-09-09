@@ -11,7 +11,7 @@ Dado um texto de entrada, o Data Guardian identifica dados pessoais (CPF, CNPJ, 
 |------|----|--------|
 | Marcos André Camargo Belo | _22510865_ | Ambiente, Agentes de IA e Esqueleto do Código |
 | João Paulo Rodrigues de Oliveira | _22508370_ | Test Harness e Evidências de Execução |
-| Pedro Henrique Barbosa | _(preencher)_ | Repositório e Governança |
+| Pedro Henrique Barbosa | _22503467_ | Repositório e Governança |
 
 ## Documentação
 
