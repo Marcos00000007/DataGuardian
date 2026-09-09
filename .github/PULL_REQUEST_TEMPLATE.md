@@ -8,6 +8,15 @@ Set-Content -Path .github\PULL_REQUEST_TEMPLATE.md -Encoding UTF8 -Value @'
 Closes #
 
 ## Checklist
+## 📋 Descrição
+
+<!-- O que este PR faz? Qual problema resolve? -->
+
+## 🔗 Issue relacionada
+
+Closes #
+
+## ✅ Checklist
 
 - [ ] O código segue o que está descrito em `docs/SPECIFICATION.md`
 - [ ] Os testes existentes continuam passando
@@ -19,3 +28,10 @@ Closes #
 
 <!-- Comandos ou passos para o revisor validar localmente -->
 '@
+## 🧪 Como testar
+
+<!-- Comandos ou passos para o revisor validar localmente -->
+
+## 📝 Observações para o revisor
+
+<!-- Algo específico que o revisor deveria prestar atenção -->
