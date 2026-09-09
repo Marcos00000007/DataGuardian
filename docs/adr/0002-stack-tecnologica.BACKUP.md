@@ -1,4 +1,4 @@
-﻿# ADR-0002: Escolha da stack tecnológica
+# ADR-0002: Escolha da stack tecnológica
 
 **Status:** Aceita
 **Data:** 2026-09-09
@@ -21,6 +21,7 @@ O Data Guardian precisa de uma stack para implementar a API descrita em `docs/SP
 
 ## Consequências
 
-- O test harness foi escrito em pytest, dentro de `backend/tests/`.
+- O test harness será escrito em pytest, dentro de `backend/tests/`.
 - O docker-compose documenta dois serviços: backend (porta 8000) e frontend (porta 5173).
 - O frontend é um cliente de demonstração da API.
+'@

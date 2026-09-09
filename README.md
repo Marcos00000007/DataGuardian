@@ -9,8 +9,8 @@ Dado um texto de entrada, o Data Guardian identifica dados pessoais (CPF, CNPJ, 
 
 | Nome | RA | Frente |
 |------|----|--------|
-| Marcos André Camargo Belo | _(preencher)_ | Ambiente, Agentes de IA e Esqueleto do Código |
-| João Paulo Rodrigues de Oliveira | _(preencher)_ | Test Harness e Evidências de Execução |
+| Marcos André Camargo Belo | _22510865_ | Ambiente, Agentes de IA e Esqueleto do Código |
+| João Paulo Rodrigues de Oliveira | _22508370_ | Test Harness e Evidências de Execução |
 | Pedro Henrique Barbosa | _(preencher)_ | Repositório e Governança |
 
 ## Documentação
