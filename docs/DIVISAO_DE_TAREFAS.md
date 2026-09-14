@@ -1,102 +1,69 @@
-Set-Content -Path docs\DIVISAO_DE_TAREFAS.md -Encoding UTF8 -Value @'
 # Divisão de Tarefas — Data Guardian
-## Sprint 1 / Entrega Inicial (Ambiente, Especificação e Test Harness)
-
-**Equipe:**
-| Nome | RA |
-|------|----|
-| Marcos André Camargo Belo | _22510865_ |
-| João Paulo Rodrigues de Oliveira | _22508370_ |
-| Pedro Henrique Barbosa | _22503467_ |
-
-Cada pessoa é dona de uma frente independente. Isso facilita o Code Review (cada PR fica pequeno e focado) e evidencia a decomposição do problema pedida na rubrica.
+## Entrega 2 (Etapa Intermediária): Publicação, Refinamento e Análise Crítica do Uso de IA
 
 ---
 
-## 👤 Pedro Henrique — Repositório & Governança
+## 👤 Marcos André Camargo Belo — Integração Final, Arquitetura & Governança Técnica
 
-**Branch:** `feature/repo-governance` / `feature/env-agents-skeleton` (docs consolidadas aqui)
+**Branch:** `feature/integracao-final-e2`
 
-<<<<<<< HEAD
-- [x] Criar o repositório no GitHub
-- [x] Configurar estrutura de branches: `main` (protegida), `develop`, `feature/*`
-- [x] Ativar proteção da branch `main` (exige PR + aprovação antes do merge)
-- [ ] Criar o GitHub Project (quadro Kanban: To Do / In Progress / Review / Done)
-- [x] Criar Issues no GitHub (via `gh issue create`) — falta vincular ao Project
-- [x] Criar template de Pull Request (`.github/PULL_REQUEST_TEMPLATE.md`)
-- [x] Escrever o `README.md` (visão geral, guia de execução, seção de ADRs)
-- [ ] Revisar/aprovar pelo menos 1 PR de outro membro
-- [ ] Preencher os RAs da equipe no README e neste documento
+- [ ] Revisar e finalizar a integração frontend ↔ backend, garantindo que a aplicação publicada resolve o problema completo (item 1 — "Solução Funcional")
+- [ ] Corrigir os erros lógicos que o João documentar na rodada final de testes (ciclo teste → correção)
+- [ ] Atualizar `README.md`: seção de **arquitetura** + **diagrama do fluxo da aplicação** (posso gerar o diagrama, ex: Mermaid, com o pipeline Detector→Validator→Classifier→Redactor→Audit + frontend↔API)
+- [ ] Consolidar as ADRs existentes (0001, 0002) e registrar novas decisões/trade-offs desta etapa, se houver
+- [ ] Abrir os Pull Requests desta etapa com descrição detalhada e **critérios de aceitação explícitos** (isso é item obrigatório novo: "critérios claros de aceitação antes de cada merge")
+- [ ] Garantir que as issues da Sprint 2 sejam fechadas conforme concluídas
 
-**Entregável:** repositório estruturado + README.md + Project/Issues populados.
+**Entregável:** aplicação integrada e funcional publicada + README com arquitetura/diagrama + ADRs atualizadas.
 
 ---
 
-## Marcos André Camargo Belo — Ambiente, Agentes de IA & Esqueleto do Código
+## 👤 Pedro Henrique Barbosa — Governança da Sprint 2 & Relato de Experiência
 
-**Branch:** `feature/env-agents-skeleton`
+**Branch:** `feature/governanca-sprint2`
 
-- [x] Escolher a stack e registrar a decisão (ADR-0002: Python/FastAPI + React/TS/Vite/Tailwind + Docker)
-- [x] Criar `Dockerfile` (backend e frontend) e `docker-compose.yml`
-- [x] Configurar o agente de IA (Claude Code) e commitar `CLAUDE.md` com as regras do fluxo SDD
-- [x] Implementar os componentes do pipeline (não são stubs — pipeline completo e funcional):
-  - `detector.py` — detecção via regex por tipo de entidade (CPF, CNPJ, EMAIL, TELEFONE, CEP, CARTAO_CREDITO)
-  - `validator.py` — validação de checksum de CPF/CNPJ (RN01/RN02)
-  - `classifier.py` — classificação de sensibilidade + resolução de sobreposição (RN03/RN04)
-  - `redactor.py` — estratégias de mascaramento MASK/REDACT/HASH (RN05)
-  - `audit.py` — geração do log de auditoria sem dado original (RN06)
-  - `service.py` — orquestração de todo o pipeline
-- [x] Expor os endpoints `POST /v1/scan` e `GET /v1/health` (`main.py`)
-- [x] Implementar o frontend de demonstração (React + TypeScript + Vite + Tailwind) consumindo a API
-- [x] Documentar os comandos de execução no README (`docker-compose up --build`)
+- [ ] Criar as Issues da Sprint 2 no GitHub (já sabe usar o `gh issue create` — segue o mesmo padrão da Entrega 1)
+- [ ] Atualizar o GitHub Project com as colunas/cards da Sprint 2
+- [ ] Revisar e aprovar pelo menos **2 Pull Requests** desta etapa, com comentários reais de code review (não só "Approve" vazio)
+- [ ] Consolidar em `docs/HISTORICO_SPRINTS.md` o histórico de commits e sprints: entregas iterativas, issues fechadas, como o trabalho foi organizado (item obrigatório novo: "Histórico de Commits e Sprints")
+- [ ] Escrever a seção **"Relato de Experiência"** — aprendizados e desafios reais do desenvolvimento em grupo (é pessoal, precisa ser a vivência dele mesmo, não dá pra terceirizar isso)
 
-**Entregável:** ambiente containerizado funcional + arquivo de regras do agente + pipeline completo rodando os endpoints. ✅ **Concluído.**
+**Entregável:** Sprint 2 organizada no Project/Issues + histórico documentado + relato de experiência.
 
 ---
 
-## 👤 João Paulo Rodrigues de Oliveira — Test Harness & Evidências de Execução
+## 👤 João Paulo Rodrigues de Oliveira — Testes Finais, Re-especificação & Análise Crítica de IA
 
-**Branch:** `feature/test-harness`
+**Branch:** `feature/testes-finais-e2`
 
-<<<<<<< HEAD
-- [x] Escolher o framework de testes (pytest)
-- [x] Suíte cobrindo os cenários principais (RF01–RF08 da spec)
-- [x] Testes para os 8 casos de borda da seção 9 da spec
-- [x] Comando único de execução (`pytest -v`)
-- [ ] Rodar a suíte no próprio ambiente e capturar o log/print real da execução
-- [ ] (Bônus) workflow de GitHub Actions
-=======
-- [ ] Escolher o framework de testes compatível com a stack (pytest).
-- [ ] Criar a suíte de testes cobrindo os cenários principais (RF01-RF08 da spec).
-- [ ] Criar testes para os casos de borda (seção 9 da spec).
-- [ ] Criar um único comando de execução que rode toda a suíte de uma vez.
-- [ ] Rodar a suíte, capturar o log/print da execução bem-sucedida e salvar.
-- [ ] (Bônus) configurar um workflow de GitHub Actions rodando os testes a cada Pull Request.
+- [ ] Rodar a suíte completa garantindo **100% de aprovação** (cenários normais + de borda) no ambiente padronizado — item obrigatório explícito da rubrica
+- [ ] Documentar os erros lógicos encontrados nesta rodada e a estratégia de correção adotada (mesmo que a correção em código seja do Marcos, o achado e a análise são registrados por ele)
+- [ ] Registrar o **"Loop de Re-especificação"**: todo ajuste na `SPECIFICATION.md` motivado por falha de teste ou feedback do grupo (seção 10 do documento)
+- [ ] Elaborar a **Análise Comparativa de Ferramentas de IA** (matriz: Claude Code vs. Codex CLI vs. Cursor vs. Antigravity — pontos fortes, limitações, impacto na qualidade)
+- [ ] Elaborar a **discussão Ética/Segurança de IA**, cobrindo os 4 pilares exigidos:
+  - Alucinação de código e geração de código inseguro/destrutivo
+  - Vazamento de dados e confidencialidade ao expor contexto a modelos
+  - Propriedade intelectual do código gerado por IA
+  - Obrigatoriedade da revisão humana no fluxo SDD
 
-**Entregável:** suíte de testes (36 testes) + comando único de execução + log/print comprobatório real.
+**Entregável:** suíte 100% aprovada + relatório de re-especificação + relatório técnico-ético completo (item 4 da rubrica).
+
+> Nota para o João: o último pilar (revisão humana obrigatória) tem material real pra usar — a gente passou por situações concretas nesse projeto (ex: o botão de "bypass rules and merge" que quase foi usado sem review) que servem de exemplo prático de por que essa revisão importa. Vale citar.
 
 ---
 
-## Ordem sugerida (para não travar ninguém)
+## Ordem sugerida
 
-1. Pedro Henrique cria repo, branches e Issues.
-2. Em paralelo, Marcos sobe o Dockerfile e o esqueleto; João Paulo escreve os testes a partir da spec.
-3. Assim que o Marcos sobe os componentes, o João Paulo pluga os testes reais neles.
-4. Cada PR precisa ser revisado por pelo menos um outro membro antes do merge.
-5. Reunião rápida antes do prazo: revisar README, prints de execução e montar o PDF final juntos.
+1. João roda a suíte completa primeiro e documenta qualquer erro lógico encontrado.
+2. Marcos corrige o que o João apontar, finaliza a integração e o README/diagrama.
+3. Em paralelo, Pedro organiza a Sprint 2 no Project/Issues e já começa o relato de experiência.
+4. João escreve a análise comparativa e ético-técnica em paralelo aos passos 1-2 (não depende deles).
+5. Todos os PRs desta etapa passam por revisão cruzada antes do merge — Pedro revisa pelo menos 2.
+6. Reunião final: revisar README, ADRs, relatório de testes e montar o PDF consolidado.
 
-## Checklist do PDF final (Moodle)
-## 🔗 Ordem sugerida (para não travar ninguém)
-
-1. **Dia 1:** Pedro Henrique cria repo, branches e Issues → todo mundo já consegue abrir sua branch.
-2. **Em paralelo:** Marcos já sobe o Dockerfile e começa o esqueleto; João Paulo já pode **escrever os testes a partir da spec** (estilo TDD), mesmo antes do código existir.
-3. Assim que o Marcos subir os stubs dos componentes, o João Paulo pluga os testes reais neles.
-4. Cada PR precisa ser revisado por **pelo menos um outro membro** antes do merge (exigência de Code Review).
-5. Reunião rápida de 15min antes do prazo: revisar README, prints de execução e montar o PDF final juntos.
-
-## 📌 Checklist do PDF final (Moodle)
-- [ ] Link do repositório GitHub
+## Checklist do PDF final (Sala Online)
+- [ ] Link do repositório GitHub atualizado
 - [ ] Nomes completos + RAs de todos
-- [ ] Resumo do ambiente, agentes usados e comandos do harness
-- [ ] Prints/logs da suíte de testes rodando
-'@
+- [ ] Relatório de execução dos testes (100% de passagem)
+- [ ] Seção de Análise Comparativa e Ético-Técnica de IA
+- [ ] Links para os Pull Requests relevantes desta etapa
