@@ -7,11 +7,11 @@
 
 **Branch:** `feature/integracao-final-e2`
 
-- [ ] Revisar e finalizar a integração frontend ↔ backend, garantindo que a aplicação publicada resolve o problema completo (item 1 — "Solução Funcional")
-- [ ] Corrigir os erros lógicos que o João documentar na rodada final de testes (ciclo teste → correção)
-- [ ] Atualizar `README.md`: seção de **arquitetura** + **diagrama do fluxo da aplicação** (posso gerar o diagrama, ex: Mermaid, com o pipeline Detector→Validator→Classifier→Redactor→Audit + frontend↔API)
-- [ ] Consolidar as ADRs existentes (0001, 0002) e registrar novas decisões/trade-offs desta etapa, se houver
-- [ ] Abrir os Pull Requests desta etapa com descrição detalhada e **critérios de aceitação explícitos** (isso é item obrigatório novo: "critérios claros de aceitação antes de cada merge")
+- [ X ] Revisar e finalizar a integração frontend ↔ backend, garantindo que a aplicação publicada resolve o problema completo (item 1 — "Solução Funcional")
+- [  ] Corrigir os erros lógicos que o João documentar na rodada final de testes (ciclo teste → correção)
+- [ X ] Atualizar `README.md`: seção de **arquitetura** + **diagrama do fluxo da aplicação** (posso gerar o diagrama, ex: Mermaid, com o pipeline Detector→Validator→Classifier→Redactor→Audit + frontend↔API)
+- [ X ] Consolidar as ADRs existentes (0001, 0002) e registrar novas decisões/trade-offs desta etapa, se houver
+- [ X ] Abrir os Pull Requests desta etapa com descrição detalhada e **critérios de aceitação explícitos** (isso é item obrigatório novo: "critérios claros de aceitação antes de cada merge")
 - [ ] Garantir que as issues da Sprint 2 sejam fechadas conforme concluídas
 
 **Entregável:** aplicação integrada e funcional publicada + README com arquitetura/diagrama + ADRs atualizadas.
