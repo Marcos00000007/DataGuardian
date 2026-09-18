@@ -195,5 +195,4 @@ Cada componente deve ser uma unidade isolada (módulo/classe/função pura sempr
 | — | Versão inicial (v1.0) publicada | Baseline para início do desenvolvimento | — |
 | 2026-09-08 | Nome do sistema definido como **Data Guardian** | Decisão da equipe sobre naming do produto | Equipe |
 | 2026-09-09 | Stack definida: backend Python/FastAPI, frontend React+TS+Vite+Tailwind, infra Docker (ver ADR-0002) | Viabilizar implementação e demonstração visual do fluxo de scan | Marcos |
-'@
-
+| 2026-09-18 | Correção de corrupção no arquivo (linha de comando PowerShell residual ao final do documento) | Higiene do repositório antes da Entrega 2 | Marcos |
