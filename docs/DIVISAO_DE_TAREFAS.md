@@ -36,15 +36,16 @@
 
 **Branch:** `feature/testes-finais-e2`
 
-- [ ] Rodar a suíte completa garantindo **100% de aprovação** (cenários normais + de borda) no ambiente padronizado — item obrigatório explícito da rubrica
-- [ ] Documentar os erros lógicos encontrados nesta rodada e a estratégia de correção adotada (mesmo que a correção em código seja do Marcos, o achado e a análise são registrados por ele)
-- [ ] Registrar o **"Loop de Re-especificação"**: todo ajuste na `SPECIFICATION.md` motivado por falha de teste ou feedback do grupo (seção 10 do documento)
-- [ ] Elaborar a **Análise Comparativa de Ferramentas de IA** (matriz: Claude Code vs. Codex CLI vs. Cursor vs. Antigravity — pontos fortes, limitações, impacto na qualidade)
-- [ ] Elaborar a **discussão Ética/Segurança de IA**, cobrindo os 4 pilares exigidos:
-  - Alucinação de código e geração de código inseguro/destrutivo
-  - Vazamento de dados e confidencialidade ao expor contexto a modelos
-  - Propriedade intelectual do código gerado por IA
-  - Obrigatoriedade da revisão humana no fluxo SDD
+- [x] Rodar a suíte completa localmente: **100% de aprovação (45/45)** em Python 3.13, incluindo cenários normais e de borda
+- [x] Reexecutar a suíte no ambiente padronizado Python 3.11/Docker: **45 testes aprovados** em Python 3.11.17
+- [x] Documentar os erros lógicos encontrados e a estratégia de correção adotada em `docs/RELATORIO_TESTES_E_ANALISE_IA.md`
+- [x] Registrar o **"Loop de Re-especificação"** e os refinamentos motivados pelos testes na seção 10 de `docs/SPECIFICATION.md`
+- [x] Elaborar a **Análise Comparativa de Ferramentas de IA** (Claude Code, Codex CLI, Cursor e Antigravity) em `docs/RELATORIO_TESTES_E_ANALISE_IA.md`
+- [x] Elaborar a **discussão Ética/Segurança de IA** em `docs/RELATORIO_TESTES_E_ANALISE_IA.md`, cobrindo os 4 pilares:
+  - [x] Alucinação de código e geração de código inseguro/destrutivo
+  - [x] Vazamento de dados e confidencialidade ao expor contexto a modelos
+  - [x] Propriedade intelectual do código gerado por IA
+  - [x] Obrigatoriedade da revisão humana no fluxo SDD
 
 **Entregável:** suíte 100% aprovada + relatório de re-especificação + relatório técnico-ético completo (item 4 da rubrica).
 
@@ -64,6 +65,6 @@
 ## Checklist do PDF final (Sala Online)
 - [ ] Link do repositório GitHub atualizado
 - [ ] Nomes completos + RAs de todos
-- [ ] Relatório de execução dos testes (100% de passagem)
-- [ ] Seção de Análise Comparativa e Ético-Técnica de IA
+- [x] Relatório de execução dos testes com aprovação no ambiente padronizado: 45/45 em Python 3.11.17
+- [x] Seção de Análise Comparativa e Ético-Técnica de IA (`docs/RELATORIO_TESTES_E_ANALISE_IA.md`)
 - [ ] Links para os Pull Requests relevantes desta etapa
