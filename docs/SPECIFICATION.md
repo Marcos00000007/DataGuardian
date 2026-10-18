@@ -1,4 +1,3 @@
-Set-Content -Path docs\SPECIFICATION.md -Encoding UTF8 -Value @'
 # Especificação Técnica — Data Guardian
 ## Motor de Detecção, Classificação e Mascaramento de Dados Pessoais (LGPD Compliance Engine)
 
@@ -195,5 +194,8 @@ Cada componente deve ser uma unidade isolada (módulo/classe/função pura sempr
 | — | Versão inicial (v1.0) publicada | Baseline para início do desenvolvimento | — |
 | 2026-09-08 | Nome do sistema definido como **Data Guardian** | Decisão da equipe sobre naming do produto | Equipe |
 | 2026-09-09 | Stack definida: backend Python/FastAPI, frontend React+TS+Vite+Tailwind, infra Docker (ver ADR-0002) | Viabilizar implementação e demonstração visual do fluxo de scan | Marcos |
-'@
-
+| 2026-09-18 | Correção de corrupção no arquivo (linha de comando PowerShell residual ao final do documento) | Higiene do repositório antes da Entrega 2 | Marcos |
+| 2026-10-15 | Detector alinhado aos exemplos de RG, nome e endereço previstos na seção 9 | Testes reproduziram ausência de detecção nos exemplos explícitos; escopo da v1 foi mantido | João Paulo Rodrigues de Oliveira |
+| 2026-10-15 | Erros de payload padronizados em HTTP 400 com envelope `error.code/message`; máscaras de documentos preservam separadores | Falhas de teste contra o exemplo de erro RF08 e o formato visual de CPF/CNPJ | João Paulo Rodrigues de Oliveira |
+| 2026-10-15 | Heurísticas de nome/endereço limitadas aos formatos de exemplo; critérios gerais permanecem pendentes | A especificação declara heurísticas simples, mas não define gramática nem limites para reduzir falsos positivos | João Paulo Rodrigues de Oliveira |
+| 2026-10-15 | Removido comando PowerShell residual do arquivo de especificação | O wrapper impedia o documento de ser consumido como Markdown pela equipe e por ferramentas | João Paulo Rodrigues de Oliveira |
