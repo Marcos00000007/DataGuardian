@@ -68,3 +68,96 @@
 - [x] Relatório de execução dos testes com aprovação no ambiente padronizado: 45/45 em Python 3.11.17
 - [x] Seção de Análise Comparativa e Ético-Técnica de IA (`docs/RELATORIO_TESTES_E_ANALISE_IA.md`)
 - [ ] Links para os Pull Requests relevantes desta etapa
+
+---
+
+# Divisão de Tarefas — Data Guardian
+## Entrega 3 (Etapa Final): Solução Final, Testes Aprovados e Release Versionada
+
+**Onde estamos (18/10/2026):** a `main` já tem a integração frontend ↔ backend, README com arquitetura/diagrama, ADRs 0001–0003, suíte com 45 testes aprovados, relatório de testes e análise de IA. **Ainda não existe:** relatório de cobertura, especificação As-Built, tag/release `v1.0.0`, vídeo, retrospectiva final e as entregas de governança da Entrega 2 (issues e Project da Sprint 2, histórico de sprints, relato de experiência).
+
+---
+
+## 👤 Marcos André Camargo Belo — Empacotamento, Higienização e Release
+
+**Branch:** `feature/empacotamento-final`
+
+**Pendências da Entrega 2 a fechar:**
+- [ ] Confirmar se os erros lógicos da rodada de testes do João (15/10) já estão corrigidos no código (a suíte em 45/45 indica que sim) e marcar o item na Entrega 2
+- [ ] Fechar as issues da Sprint 2 quando o Pedro as criar
+
+**Entrega 3:**
+- [ ] Docker: subir a aplicação e rodar os testes com um comando cada, a partir de um clone limpo (hoje a imagem do backend instala só `requirements.txt`, sem `pytest`, e o comando de teste do README depende de o backend estar no ar)
+- [ ] Garantir que porta ocupada não impeça a execução dos testes (a 8000 já travou uma execução)
+- [ ] Higienização: remover `__pycache__` versionado, tirar `--reload` do modo padrão, atualizar a versão `0.1.0` do `main.py`, resolver ou documentar o comentário "ajustar para produção" do CORS e conferir que não há credenciais
+- [ ] README: manter arquitetura/diagrama e tabela de ADRs; atualizar instalação, variáveis de ambiente, execução e comando de testes/cobertura
+- [ ] Registrar em ADR a decisão de empacotamento
+- [ ] Abrir o PR com critérios de aceitação e revisão de outro membro
+- [ ] Conferir `main` sem PRs abertos nem conflitos
+- [ ] Criar a tag e publicar a release `v1.0.0` sobre o commit final aprovado
+- [ ] Montar o PDF de encerramento
+
+**Entregável:** ambiente de comando único, repositório higienizado e release `v1.0.0` publicada.
+
+---
+
+## 👤 João Paulo Rodrigues de Oliveira — Cobertura, Especificação As-Built e Evidências Finais
+
+**Branch:** `feature/as-built-e-cobertura` (a branch `feature/testes-finais-e2` da Entrega 2 não chegou a ser criada)
+
+**Já concluído na Entrega 2 e reaproveitado no PDF final:** suíte 45/45, erros lógicos e loop de re-especificação, análise comparativa das 4 ferramentas de IA e discussão ética (4 pilares). Não é preciso refazer; basta referenciar e ajustar o que estiver listado abaixo.
+
+**Entrega 3:**
+- [ ] Relatório de cobertura de código (`pytest-cov`): identificar módulos críticos com cobertura baixa (`validator`, `redactor`, `classifier`, `service`) e cobri-los com testes que tenham `assert`
+- [ ] Log final da suíte 100% aprovada, gerado na `main` atualizada, com a tabela de cobertura (screenshots/logs para o PDF)
+- [ ] Especificação As-Built: atualizar `docs/SPECIFICATION.md` (hoje marcada "Versão 1.0 (inicial) / Em revisão") ou criar documento próprio, refletindo exatamente o código entregue: contratos de entrada e saída, erro 400, máscaras com separadores, entidades RG/NOME/ENDERECO, seções 3, 7 e 9
+- [ ] Conferir os offsets do exemplo da seção 7.1 (as posições do e-mail parecem erradas)
+- [ ] Fechar as pendências da seção 6 do relatório: medir o RNF01 (500 ms) ou declarar como fora do escopo, e definir ou assumir como limitação as heurísticas de NOME e ENDERECO
+- [ ] No relatório, corrigir a frase que diz que a rodada foi feita direto na `main` (o histórico mostra que entrou pelo PR #28) e conferir se o episódio do "bypass rules and merge" está citado no pilar da revisão humana
+- [ ] Configurar nome e e-mail no Git (o commit de 15/10 aparece como "Seu Nome")
+- [ ] Abrir o PR com critérios de aceitação e revisão de outro membro
+- [ ] Montar o PDF de encerramento
+
+**Entregável:** suíte 100% aprovada com cobertura, especificação As-Built e evidências finais para o PDF.
+
+---
+
+## 👤 Pedro Henrique Barbosa — Governança, Retrospectiva e Vídeo
+
+**Branch:** `feature/governanca-final` (a `feature/governanca-sprint2` da Entrega 2 ainda não tem entrega concluída; verificar se o PR #29 já cobre parte dela)
+
+**Pendências da Entrega 2 (nenhuma marcada até agora; entram no "Histórico Integrado de Versionamento" da Entrega 3):**
+- [ ] Criar as issues da Sprint 2 (hoje o repositório só tem as issues #6 a #23, da Entrega 1) e atualizar o GitHub Project (issue #7)
+- [ ] Escrever `docs/HISTORICO_SPRINTS.md` com o histórico de commits e sprints
+- [ ] Escrever o Relato de Experiência, pessoal e na voz dele (serve de base para a retrospectiva)
+- [ ] Revisar e aprovar pelo menos 2 PRs com comentários reais de code review
+
+**Entrega 3:**
+- [ ] Revisar e aprovar os PRs finais do Marcos e do João: ler o diff, rodar os testes, conferir os critérios de aceitação
+- [ ] Decidir o PR #29: aprovar ou fechar com justificativa
+- [ ] Deixar o repositório sem PRs abertos, issues finais fechadas e branches obsoletas removidas
+- [ ] Retrospectiva final do grupo (`docs/RETROSPECTIVA.md`): eficácia dos agentes de IA no fluxo SDD, ganho de produtividade com números que o grupo consiga justificar, dificuldades superadas e lições de governança; cada integrante contribui com a própria experiência
+- [ ] Vídeo de 3 a 5 minutos: organizar quem fala, mostrar o fluxo principal, a resolução do problema e a execução dos testes em tempo real; publicar o link
+- [ ] Abrir o PR com critérios de aceitação e revisão de outro membro
+- [ ] Montar o PDF de encerramento
+
+**Entregável:** governança concluída, retrospectiva final e vídeo de demonstração publicado.
+
+---
+
+## Ordem sugerida (Entrega 3)
+
+1. Pedro fecha primeiro as pendências de governança da Entrega 2, que não dependem de ninguém (issues, Project, histórico).
+2. Marcos (ambiente de comando único) e João (As-Built e testes) trabalham em paralelo. A cobertura final do João usa o ambiente do Marcos já mergeado.
+3. Pedro revisa os PRs conforme forem abertos.
+4. Com tudo mergeado e a `main` limpa, Marcos cria a tag e a release `v1.0.0`.
+5. Pedro grava o vídeo sobre a versão com a tag.
+6. Reunião final: conferir README, especificação, relatório de testes e montar os PDFs.
+
+## Checklist do PDF final (Sala Online — Entrega 3)
+- [ ] Link direto para a Release `v1.0.0`
+- [ ] Nomes completos + RAs de todos
+- [ ] Relatório de execução dos testes aprovados e cobertura de código (screenshots/logs)
+- [ ] Link do vídeo de demonstração
+- [ ] Resumo executivo de encerramento e lições aprendidas
+- [x] Análise comparativa e ético-técnica de IA (já concluída em `docs/RELATORIO_TESTES_E_ANALISE_IA.md`)

@@ -1,21 +1,23 @@
 # Relatório de Testes, Re-especificação e Análise de IA
 
 **Projeto:** Data Guardian
-**Data da rodada:** 2026-10-15
+**Data da rodada:** 2026-10-18
 **Responsável:** João Paulo Rodrigues de Oliveira
 **Base de requisitos:** `docs/SPECIFICATION.md`
 
 ## 1. Resultado da suíte
 
-A suíte foi completada com verificações comportamentais para os requisitos RF01–RF08, RN01–RN06 e casos de borda da seção 9. Foram removidos testes vazios que terminavam sem asserções. A cobertura desta rodada inclui validação de CPF/CNPJ, detecção configurável, offsets, classificação, estratégias de mascaramento, entradas inválidas, auditoria sem o valor original, sobreposição CPF/telefone e texto de 10.000 caracteres.
+A suíte foi completada com verificações comportamentais para os requisitos RF01–RF08, RN01–RN06 e casos de borda da seção 9. Foram removidos testes vazios que terminavam sem asserções. A cobertura desta rodada inclui validação de CPF/CNPJ, detecção configurável, offsets, classificação, estratégias de mascaramento, entradas inválidas, auditoria sem o valor original, sobreposição CPF/telefone e texto de 10.000 caracteres. A execução local abaixo foi reproduzida em 2026-10-18; os registros de 2026-10-15 são mantidos como histórico e não são apresentados como reexecuções desta sessão.
 
 | Execução | Resultado | Observação |
 |---|---:|---|
-| `python -m pytest backend/tests/test_suite.py -q` | 40 aprovados | Suíte de integração/API após os ajustes |
-| `python -m pytest backend/tests -q` | **45 aprovados** | Suíte completa local, Python 3.13.14 |
-| Ambiente padronizado (Docker, Python 3.11.17) | **45 aprovados** | Suíte completa executada no container do backend |
+| `python -m pytest backend/tests -q` (2026-10-18) | **45 aprovados** | Reproduzido localmente com Python 3.13.14 |
+| `py -3.11 -m pytest tests -q` (executado em `backend`, 2026-10-18) | **45 aprovados** | Reproduzido localmente com Python 3.11.9; não é execução em container nem versão 3.11.17 |
+| `docker compose run --rm backend sh -c "python -m pip install -r requirements-dev.txt; python -m pytest -q"` (2026-10-18) | **45 aprovados** | Python 3.11.17 no container; dependências de teste instaladas no container temporário, pois a imagem padrão inclui somente dependências de produção |
+| `python -m pytest backend/tests/test_suite.py -q` (registro de 2026-10-15) | 40 aprovados | Resultado da rodada anterior, não reexecutado nesta sessão |
+| Docker, Python 3.11.17 (registro de 2026-10-15) | 45 aprovados | Resultado histórico anterior, agora reproduzido nesta sessão |
 
-Assim, a suíte teve 100% de aprovação (45/45) tanto localmente quanto no ambiente padronizado Python 3.11.17/Docker. O teste de 10.000 caracteres confirma o comportamento funcional, mas não constitui benchmark suficiente para certificar o limite de 500 ms do RNF01.
+Assim, a aprovação de 100% (45/45) foi reproduzida nesta sessão em Python 3.13.14 local, Python 3.11.9 local e Python 3.11.17 no Docker. Para o Docker, foi necessário instalar `requirements-dev.txt` no container temporário porque a imagem de execução padrão não inclui `pytest`. O teste de 10.000 caracteres confirma o comportamento funcional, mas não constitui benchmark suficiente para certificar o limite de 500 ms do RNF01.
 
 ## 2. Achados e correções desta rodada
 
@@ -29,7 +31,7 @@ Assim, a suíte teve 100% de aprovação (45/45) tanto localmente quanto no ambi
 
 ## 3. Loop de Re-especificação
 
-O ciclo adotado nesta rodada é:
+O ciclo adotado nesta rodada e registrado na seção 10 da especificação é:
 
 1. Executar testes rastreáveis a uma regra ou exemplo já escrito na especificação.
 2. Reproduzir a falha e classificar sua origem: defeito de código, teste inválido ou requisito ambíguo.
@@ -37,7 +39,7 @@ O ciclo adotado nesta rodada é:
 4. Para regra nova ou ambígua, registrar a decisão e o motivo na seção 10 de `SPECIFICATION.md` antes de implementar comportamento novo.
 5. Reexecutar o teste focado, depois a suíte completa; fazer revisão humana das mudanças e dos diffs.
 
-Nesta rodada, as correções de erro HTTP e máscara seguiram exemplos já existentes. O ajuste do detector implementou os formatos de RG, nome e endereço presentes na seção de escopo e no harness. A seção 10 registra os ajustes datados de 2026-10-15 e mantém explícita a ambiguidade das heurísticas de nome/endereço: não há gramática, fronteira de entidade ou critério para falsos positivos definido. O comportamento foi limitado aos exemplos, sem alegar resolver essa ambiguidade.
+Na rodada de 2026-10-15, as correções de erro HTTP e máscara seguiram exemplos já existentes. O ajuste do detector implementou os formatos de RG, nome e endereço presentes na seção de escopo e no harness. A seção 10 registra esses ajustes e mantém explícita a ambiguidade das heurísticas de nome/endereço: não há gramática, fronteira de entidade ou critério para falsos positivos definido. O comportamento foi limitado aos exemplos, sem alegar resolver essa ambiguidade. Em 2026-10-18, os 45 testes foram reproduzidos localmente em Python 3.13.14 e 3.11.9, e no Docker com Python 3.11.17.
 
 ## 4. Comparação de ferramentas de IA
 
@@ -72,6 +74,6 @@ O agente pode propor e executar mudanças, mas a equipe é responsável por requ
 
 ## 6. Pendências e limites
 
-- O branch indicado na tarefa (`feature/testes-finais-e2`) não existe no clone atual; esta rodada foi feita em `main`. Não foi criado nem trocado branch para evitar escolher uma base incorreta.
+- A solicitação original indicava `feature/testes-finais-e2`, que não foi encontrado; conforme orientação posterior, estas alterações serão direcionadas para `feature/divisao-entrega3`.
 - Definir em refinamento futuro a gramática e os limites das heurísticas de NOME e ENDERECO; hoje os testes cobrem somente os exemplos explícitos.
 - Medir formalmente RNF01 (10.000 caracteres em menos de 500 ms) em ambiente local/dev padronizado; o teste funcional não certifica o tempo.
