@@ -2,22 +2,36 @@ services:
   backend:
     build: ./backend
     container_name: data-guardian-backend
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
     ports:
-      - "8000:8000"
+      - "${BACKEND_PORT:-8000}:8000"
     volumes:
       - ./backend:/app
     environment:
       - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+
+  # Test harness: não sobe com `docker-compose up` (profile "test").
+  # Execução: docker-compose run --rm tests
+  tests:
+    build: ./backend
+    profiles: ["test"]
+    command: pytest -v -p no:cacheprovider --cov=app --cov-report=term-missing
+    volumes:
+      - ./backend:/app
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+      - COVERAGE_FILE=/tmp/.coverage
 
   frontend:
     build: ./frontend
     container_name: data-guardian-frontend
     ports:
-      - "5173:5173"
+      - "${FRONTEND_PORT:-5173}:5173"
     volumes:
       - ./frontend:/app
       - /app/node_modules
     environment:
-      - VITE_API_URL=http://localhost:8000
+      - VITE_API_URL=http://localhost:${BACKEND_PORT:-8000}
     depends_on:
       - backend
